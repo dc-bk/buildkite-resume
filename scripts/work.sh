@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -euo pipefail
+set -eo pipefail
 
-if [ "$FROM" == "Present" ]; then
+if [ "$TO" = "Present" ]; then
   exit 75
 fi
