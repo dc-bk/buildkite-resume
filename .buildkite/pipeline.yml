@@ -57,9 +57,11 @@ steps:
     fields:
       - text: 'Name'
         key: 'name'
+        hint: 'How should I address you?'
         required: true
       - text: 'Email'
         key: 'email'
+        hint: 'Your email address that I can reply to'
         format: '^[^\s@]+@[^\s@]+\.[^\s@]+$'
         required: true
       - text: 'Message'
@@ -82,8 +84,8 @@ steps:
             - 'SMTP_SECRET'
             - 'SMTP_HOST=smtp.mail.me.com'
             - 'SMTP_PORT=587'
-            - 'FROM=dyego@dyegocosta.com'
-            - 'TO=dyego@dyegocosta.com'
+            - 'FROM_EMAIL=dyego@dyegocosta.com'
+            - 'TO_EMAIL=dyego@dyegocosta.com'
             - 'SUBJECT=Interview Request From Buildkite'
     env:
       REPLY_TO_EMAIL: '{{ buildkite.meta.email }}'
