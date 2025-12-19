@@ -71,9 +71,9 @@ steps:
   - label: ':rocket: Schedule Interview'
     command: ruby scripts/send_email.rb
     env:
-      REPLY_TO_EMAIL: '{{ buildkite.meta.email }}'
-      REPLY_TO_NAME: '{{ buildkite.meta.name }}'
-      BODY: '{{ buildkite.meta.message }}'
+      REPLY_TO_EMAIL: '$(buildkite-agent meta-data get email)'
+      REPLY_TO_NAME: '$(buildkite-agent meta-data get name)'
+      BODY: '$(buildkite-agent meta-data get message)'
     secrets:
       - SMTP_USER
       - SMTP_SECRET
