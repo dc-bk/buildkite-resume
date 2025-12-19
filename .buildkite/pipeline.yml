@@ -4,10 +4,25 @@ steps:
       - label: 'High School'
         key: 'high-school'
         command: scripts/study.sh
+        artifact_paths: ./education-*.md
+        env:
+          COURSE_NAME: 'High School'
+          FROM: '2007-01'
+          TO: '2009-12'
       - label: 'Microsoft Students To Business'
         command: scripts/study.sh
+        artifact_paths: ./education-*.md
+        env:
+          COURSE_NAME: 'Microsoft Students To Business'
+          FROM: '2009'
+          TO: '2009'
       - label: 'Certified Computer Systems Analyst'
         command: scripts/study.sh
+        artifact_paths: ./education-*.md
+        env:
+          COURSE_NAME: 'Certified Computer Systems Analyst'
+          FROM: '2008'
+          TO: '2010'
 
   - wait: ~
 
@@ -16,10 +31,15 @@ steps:
       - label: 'Information Technology for Business'
         command: scripts/study.sh
         depends_on: 'high-school'
+        artifact_paths: ./education-*.md
+        env:
+          COURSE_NAME: 'Information Technology for Business'
+          FROM: '2010'
+          TO: '2012'
       - label: 'Software Engineer at MCOM'
         key: 'mcom'
         command: scripts/work.sh
-        artifact_paths: ./experience.md
+        artifact_paths: ./experience-*.md
         env:
           JOB_TITLE: 'Software Engineer'
           COMPANY: 'MCOM'
@@ -35,7 +55,7 @@ steps:
         key: 'lambda3'
         depends_on: 'mcom'
         command: scripts/work.sh
-        artifact_paths: ./experience.md
+        artifact_paths: ./experience-*.md
         env:
           JOB_TITLE: 'Software Engineer'
           COMPANY: 'Lambda3'
@@ -46,7 +66,7 @@ steps:
         key: 'springboard-retail'
         depends_on: 'lambda3'
         command: scripts/work.sh
-        artifact_paths: ./experience.md
+        artifact_paths: ./experience-*.md
         env:
           JOB_TITLE: 'Lead Developer'
           COMPANY: 'Springboard Retail'
@@ -57,7 +77,7 @@ steps:
         key: 'heartland'
         depends_on: 'springboard-retail'
         command: scripts/work.sh
-        artifact_paths: ./experience.md
+        artifact_paths: ./experience-*.md
         env:
           JOB_TITLE: 'Lead Developer'
           COMPANY: 'Heartland (A Global Payments Company)'
@@ -68,7 +88,7 @@ steps:
         key: 'biggerpockets'
         depends_on: 'heartland'
         command: scripts/work.sh
-        artifact_paths: ./experience.md
+        artifact_paths: ./experience-*.md
         env:
           JOB_TITLE: 'Senior Software Engineer'
           COMPANY: 'BiggerPockets'
