@@ -67,11 +67,7 @@ steps:
         required: true
 
   - label: ':rocket: Schedule Interview'
-    command: |
-      export REPLY_TO_EMAIL="$(buildkite-agent meta-data get email)"
-      export REPLY_TO_NAME="$(buildkite-agent meta-data get name)"
-      export BODY="$(buildkite-agent meta-data get message)"
-      scripts/send_email.rb
+    command: scripts/send_email.rb
     plugins:
       - docker#v5.13.0:
           image: 'ruby:3.4.8-alpine'
@@ -79,6 +75,9 @@ steps:
             - '.:/app'
           workdir: '/app'
           environment:
+            - 'REPLY_TO_EMAIL'
+            - 'REPLY_TO_NAME'
+            - 'BODY'
             - 'SMTP_USER'
             - 'SMTP_SECRET'
             - 'SMTP_HOST=smtp.mail.me.com'
@@ -86,3 +85,7 @@ steps:
             - 'FROM=dyego@dyegocosta.com'
             - 'TO=dyego@dyegocosta.com'
             - 'SUBJECT=Interview Request From Buildkite'
+    env:
+      REPLY_TO_EMAIL: '{{ buildkite.meta.email }}'
+      REPLY_TO_NAME: '{{ buildkite.meta.name }}'
+      BODY: '{{ buildkite.meta.message }}'
