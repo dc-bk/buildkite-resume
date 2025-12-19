@@ -88,7 +88,7 @@ steps:
 
   - label: ':memo: Build & Publish Resume'
     command: |
-      scripts/build_resume.sh
+      scripts/build-resume.sh
       cat resume.md | buildkite-agent annotate
     artifact_paths: resume.md
 
