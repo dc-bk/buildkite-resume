@@ -67,7 +67,7 @@ steps:
         required: true
 
   - label: ':rocket: Schedule Interview'
-    command: scripts/send_email.rb
+    command: ruby scripts/send_email.rb
     plugins:
       - docker#v5.13.0:
           image: 'ruby:3.4.8-alpine'
