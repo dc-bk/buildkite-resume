@@ -1,7 +1,9 @@
 require 'net/smtp'
 
-smtp_host = ENV.fetch("SMTP_HOST")
-smtp_port = ENV.fetch("SMTP_PORT")
+smtp_host   = ENV.fetch("SMTP_HOST")
+smtp_port   = ENV.fetch("SMTP_PORT")
+smtp_user   = ENV.fetch("SMTP_USER")
+smtp_secret = ENV.fetch("SMTP_SECRET")
 
 reply_to_email = ENV.fetch("REPLY_TO_EMAIL")
 reply_to_name  = ENV.fetch("REPLY_TO_NAME")
@@ -9,9 +11,6 @@ from_email     = ENV.fetch("FROM_EMAIL")
 to_email       = ENV.fetch("TO_EMAIL")
 subject        = ENV.fetch("SUBJECT")
 body           = ENV.fetch("BODY")
-
-smtp_user   = ENV.fetch("SMTP_USER")
-smtp_secret = ENV.fetch("SMTP_SECRET")
 
 message = <<~MSG
   From: #{from_email}

@@ -86,6 +86,14 @@ steps:
   - wait:
     continue_on_failure: true
 
+  - label: ':memo: Build & Publish Resume'
+    command: |
+      scripts/build_resume.sh
+      cat resume.md | buildkite-agent annotate
+    artifact_paths: resume.md
+
+  - wait: ~
+
   - block: ':email: Schedule Interview?'
     prompt: 'Fill out the details'
     fields:
