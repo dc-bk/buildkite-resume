@@ -20,6 +20,10 @@ steps:
         key: 'mcom'
         command: scripts/work.sh
         artifact_paths: ./experience.md
+        env:
+          SKILLS: 'C#, ASP.NET MVP, SQL Server, Entity Framework'
+          FROM: '2010-08'
+          TO: '2012-08'
 
   - wait: ~
 
@@ -30,27 +34,45 @@ steps:
         depends_on: 'mcom'
         command: scripts/work.sh
         artifact_paths: ./experience.md
-      - label: 'Software Engineer at Springboard Retail'
+        env:
+          SKILLS: 'Ruby, JavaScript, C#, Sinatra, MonoRail, ASP.NET WebAPI'
+          FROM: '2012-08'
+          TO: '2014-04'
+      - label: 'Lead Developer at Springboard Retail'
         key: 'springboard-retail'
         depends_on: 'lambda3'
         command: scripts/work.sh
         artifact_paths: ./experience.md
-      - label: 'Software Engineer at Heartland (A Global Payments Company)'
+        env:
+          SKILLS: 'Ruby, Go, Sinatra, PostgreSQL, React, Buildkite, IaC, k8s, Leadership, Hiring, Team Management'
+          FROM: '2014-04'
+          TO: '2020-03'
+      - label: 'Lead Developer at Heartland (A Global Payments Company)'
         key: 'heartland'
         depends_on: 'springboard-retail'
         command: scripts/work.sh
         artifact_paths: ./experience.md
-      - label: 'Software Engineer at BiggerPockets'
+        env:
+          SKILLS: 'Ruby, Go, Sinatra, PostgreSQL, React, Buildkite, IaC, k8s, Leadership, Hiring, Team Management'
+          FROM: '2020-03'
+          TO: '2022-11'
+      - label: 'Senior Software Engineer at BiggerPockets'
         key: 'biggerpockets'
         depends_on: 'heartland'
         command: scripts/work.sh
         artifact_paths: ./experience.md
-        soft_fail: true
-      - label: 'Software Engineer at Buildkite'
+        soft_fail:
+          - exit_status: 75
+        env:
+          SKILLS: 'Ruby on Rails, ViewComponents, PostgreSQL, CircleCI, Heroku'
+          FROM: '2022-11'
+          TO: 'Present'
+      - label: 'Senior Engineer (Pipelines) at Buildkite'
         depends_on: biggerpockets
         command: scripts/work.sh
 
-  - wait: ~
+  - wait:
+    continue_on_failure: true
 
   - block: ':email: Schedule Interview?'
     prompt: 'Fill out the details'
