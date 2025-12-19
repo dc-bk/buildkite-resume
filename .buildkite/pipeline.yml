@@ -61,16 +61,17 @@ steps:
         depends_on: 'heartland'
         command: scripts/work.sh
         artifact_paths: ./experience.md
-        soft_fail:
-          - exit_status: 75
         env:
           SKILLS: 'Ruby on Rails, ViewComponents, PostgreSQL, CircleCI, Heroku'
           FROM: '2022-11'
           TO: 'Present'
       - label: 'Senior Engineer (Pipelines) at Buildkite'
         depends_on: biggerpockets
-        command: scripts/work.sh
-        skip: 'Work In Progress'
+        command: |
+          echo "Work In Progress"
+          exit 75
+        soft_fail:
+          - exit_status: 75
 
   - wait:
     continue_on_failure: true
