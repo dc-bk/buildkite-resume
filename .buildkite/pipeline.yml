@@ -70,6 +70,7 @@ steps:
       - label: 'Senior Engineer (Pipelines) at Buildkite'
         depends_on: biggerpockets
         command: scripts/work.sh
+        skip: 'Work In Progress'
 
   - wait:
     continue_on_failure: true
