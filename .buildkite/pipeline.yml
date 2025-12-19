@@ -48,3 +48,40 @@ steps:
         soft_fail: true
       - label: 'Software Engineer at Buildkite'
         depends_on: biggerpockets
+
+  - wait: ~
+
+  - block: ':email: Schedule Interview?'
+    prompt: 'Fill out the details'
+    fields:
+      - text: 'Name'
+        key: 'name'
+        required: true
+      - text: 'Email'
+        key: 'email'
+        format: '^[^\s@]+@[^\s@]+\.[^\s@]+$'
+        required: true
+      - text: 'Message'
+        key: 'message'
+        required: true
+
+  - label: ':rocket: Schedule Interview'
+    command: |
+      export REPLY_TO_EMAIL=${buildkite-agent meta-data get email}
+      export REPLY_TO_NAME=${buildkite-agent meta-data get name}j
+      export BODY=${buildkite-agent meta-data get message}
+      scripts/send_email.rb
+    plugins:
+      - docker#v5.13.0:
+          image: 'ruby:3.4.8-alpine'
+          volumes:
+            - '.:/app'
+          workdir: '/app'
+          environment:
+            - 'SMTP_USER'
+            - 'SMTP_SECRET'
+            - 'SMTP_HOST=smtp.mail.me.com'
+            - 'SMTP_PORT=587'
+            - 'FROM=dyego@dyegocosta.com'
+            - 'TO=dyego@dyegocosta.com'
+            - 'SUBJECT=Interview Request From Buildkite'
