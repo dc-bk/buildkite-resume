@@ -48,6 +48,7 @@ steps:
         soft_fail: true
       - label: 'Software Engineer at Buildkite'
         depends_on: biggerpockets
+        command: scripts/work.sh
 
   - wait: ~
 
