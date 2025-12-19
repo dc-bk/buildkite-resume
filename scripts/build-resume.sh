@@ -4,9 +4,14 @@ set -euo pipefail
 
 OUTPUT_FILE="resume.md"
 
+mkdir -p tmp
+
+echo "--- Downloading artifacts"
 buildkite-agent artifact download "experience-*.md" tmp
 buildkite-agent artifact download "education-*.md" tmp
 
+
+echo "--- Building resume"
 {
   echo "# Dyego Costa"
   echo
@@ -26,4 +31,5 @@ buildkite-agent artifact download "education-*.md" tmp
   done
 } > "$OUTPUT_FILE"
 
+echo "--- Uploading resume"
 buildkite-agent artifact upload "$OUTPUT_FILE"
