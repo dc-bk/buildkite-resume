@@ -1,0 +1,50 @@
+steps:
+  - group: ':baby::skin-tone-5: Early Education'
+    steps:
+      - label: 'High School'
+        key: 'high-school'
+        command: scripts/study.sh
+      - label: 'Microsoft Students To Business'
+        command: scripts/study.sh
+      - label: 'Certified Computer Systems Analyst'
+        command: scripts/study.sh
+
+  - wait: ~
+
+  - group: ':adult::skin-tone-5: College Years'
+    steps:
+      - label: 'Information Technology for Business'
+        command: scripts/study.sh
+        depends_on: 'high-school'
+      - label: 'Software Engineer at MCOM'
+        key: 'mcom'
+        command: scripts/work.sh
+        artifact_paths: ./experience.md
+
+  - wait: ~
+
+  - group: ':male_mage::skin-tone-5: Professional Experience'
+    steps:
+      - label: 'Software Engineer at Lambda3'
+        key: 'lambda3'
+        depends_on: 'mcom'
+        command: scripts/work.sh
+        artifact_paths: ./experience.md
+      - label: 'Software Engineer at Springboard Retail'
+        key: 'springboard-retail'
+        depends_on: 'lambda3'
+        command: scripts/work.sh
+        artifact_paths: ./experience.md
+      - label: 'Software Engineer at Heartland (A Global Payments Company)'
+        key: 'heartland'
+        depends_on: 'springboard-retail'
+        command: scripts/work.sh
+        artifact_paths: ./experience.md
+      - label: 'Software Engineer at BiggerPockets'
+        key: 'biggerpockets'
+        depends_on: 'heartland'
+        command: scripts/work.sh
+        artifact_paths: ./experience.md
+        soft_fail: true
+      - label: 'Software Engineer at Buildkite'
+        depends_on: biggerpockets
