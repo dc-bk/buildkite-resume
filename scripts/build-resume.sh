@@ -18,14 +18,14 @@ echo "--- Building resume"
 
   echo "## Professional Experience"
   echo
-  for file in tmp/experience-*.md; do
+  for file in $(ls tmp/experience-*.md | sort); do
     cat "$file"
     echo
   done
 
   echo "## Academic"
   echo
-  for file in tmp/education-*.md; do
+  for file in $(ls tmp/education-*.md | sort); do
     cat "$file"
     echo
   done

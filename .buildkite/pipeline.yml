@@ -62,26 +62,37 @@ steps:
           SKILLS: 'Ruby, JavaScript, C#, Sinatra, MonoRail, ASP.NET WebAPI'
           FROM: '2012-08'
           TO: '2014-04'
-      - label: 'Lead Developer at Springboard Retail'
-        key: 'springboard-retail'
+      - label: 'Software Engineer at Springboard Retail'
+        key: 'software-engineer-springboard-retail'
         depends_on: 'lambda3'
+        command: scripts/work.sh
+        artifact_paths: ./experience-*.md
+        env:
+          JOB_TITLE: 'Software Engineer Developer'
+          COMPANY: 'Springboard Retail'
+          SKILLS: 'Ruby, Go, Sinatra, PostgreSQL, React, Buildkite'
+          FROM: '2014-04'
+          TO: '2015-09'
+      - label: 'Lead Developer at Springboard Retail'
+        key: 'lead-developer-springboard-retail'
+        depends_on: 'software-engineer-springboard-retail'
         command: scripts/work.sh
         artifact_paths: ./experience-*.md
         env:
           JOB_TITLE: 'Lead Developer'
           COMPANY: 'Springboard Retail'
-          SKILLS: 'Ruby, Go, Sinatra, PostgreSQL, React, Buildkite, IaC, k8s, Leadership, Hiring, Team Management'
-          FROM: '2014-04'
+          SKILLS: 'Ruby, Go, Sinatra, PostgreSQL, React, Buildkite, IaC, k8s, Leadership, Hiring'
+          FROM: '2015-09'
           TO: '2020-03'
       - label: 'Lead Developer at Heartland (A Global Payments Company)'
         key: 'heartland'
-        depends_on: 'springboard-retail'
+        depends_on: 'lead-developer-springboard-retail'
         command: scripts/work.sh
         artifact_paths: ./experience-*.md
         env:
           JOB_TITLE: 'Lead Developer'
           COMPANY: 'Heartland (A Global Payments Company)'
-          SKILLS: 'Ruby, Go, Sinatra, PostgreSQL, React, Buildkite, IaC, k8s, Leadership, Hiring, Team Management'
+          SKILLS: 'Ruby, Go, Sinatra, PostgreSQL, React, Buildkite, IaC, k8s, Leadership, Hiring'
           FROM: '2020-03'
           TO: '2022-11'
       - label: 'Senior Software Engineer at BiggerPockets'
