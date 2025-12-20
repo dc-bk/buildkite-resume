@@ -68,7 +68,7 @@ steps:
         command: scripts/work.sh
         artifact_paths: ./experience-*.md
         env:
-          JOB_TITLE: 'Software Engineer Developer'
+          JOB_TITLE: 'Software Engineer'
           COMPANY: 'Springboard Retail'
           SKILLS: 'Ruby, Go, Sinatra, PostgreSQL, React, Buildkite'
           FROM: '2014-04'
