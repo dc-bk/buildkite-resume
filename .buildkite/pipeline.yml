@@ -70,7 +70,7 @@ steps:
         env:
           JOB_TITLE: 'Software Engineer'
           COMPANY: 'Springboard Retail'
-          SKILLS: 'Ruby, Go, JavaScript, Sinatra, PostgreSQL, Redis, React, Buildkite, Rackspace, Datadog'
+          SKILLS: 'Ruby, Go, JavaScript, Sinatra, PostgreSQL, Redis, React, Buildkite, Rackspace Bare Metal, Datadog'
           FROM: '2014-04'
           TO: '2015-09'
       - label: 'Lead Developer at Springboard Retail'
@@ -103,7 +103,7 @@ steps:
         env:
           JOB_TITLE: 'Senior Software Engineer'
           COMPANY: 'BiggerPockets'
-          SKILLS: 'Ruby on Rails, JavaScript, ViewComponents, PostgreSQL, Redis, CircleCI, Heroku'
+          SKILLS: 'Ruby on Rails, JavaScript, ViewComponents, PostgreSQL, ElasticSearch, Redis, CircleCI, Heroku'
           FROM: '2022-11'
           TO: 'Present'
       - label: 'Senior Engineer (Pipelines) at Buildkite'
